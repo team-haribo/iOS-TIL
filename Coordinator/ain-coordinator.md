@@ -50,7 +50,7 @@ class AppCoordinator: Coordinator {
 }
 ```
 
-Coordinator 프로토콜을 정의하고 AppCoordinatorfmf rngusgksek
+Coordinator 프로토콜을 정의하고 AppCoordinator를 구현한다.
 
 - childCoordinators: 하위 Coordinator들을 저장하는 배열
 
