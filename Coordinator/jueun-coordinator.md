@@ -85,3 +85,68 @@ Coordinator가 Router에게 어떤 ViewController를 불러야 하는지 알려�
 위의 구조라면 당연히 하나의 ViewControlle는 다른 ViewController의 존재에 대해 모르게 됨
 
 그리고 화면 전환은 Coordinator에게 위임하는 구조임
+
+<br>
+
+### MVVM-C
+: MVVM에서 ViewController 계층을 관리하는 Coordinator를 따로 분리하는 것
+
+<br>
+
+### Coordinator 사용법
+1. 자식 Coordinator를 사용하지 않는 방법
+
+	1) Coordinator 프로토콜 생성
+	2) 객체 생성하기
+		- 많은 ViewController에서 공유되기 때문에 클래스로 작성
+	3) 엔트리포인트에 Coordinator 연결하기
+		- AppDelegate
+		```Swift
+		class AppDelegate: UIResponder, UIApplicationDelegate {
+			// 생략
+
+			func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+				let navController = UINavigationController()
+				coordinator = MainCoordinator(navigationController: navController)
+				coordinator?.start()
+			
+				window = UIWindow(frame: UIScreen.main.bounds)
+				window?.rootViewController = navController
+				window?.makeKeyAndVisible()
+
+					return true
+		}
+
+		// 생략
+		```
+	- SceneDelegate
+		```Swift
+		class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+			// 생략
+
+			func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        let navController = UINavigationController()
+        
+        coordinator = MainCoordinator(navigationController: navController)
+        coordinator?.start()
+        
+        window = UIWindow(windowScene: windowScene)
+        window?.rootViewController = navController
+        window?.makeKeyAndVisible()
+    		}
+		}
+		```
+	4) 화면전환
+	
+<br>
+
+2. 자식 Coordinator를 함께 사용하는 방법
+	: AppDelegate(SceneDelegate)는 최상위 AppCoordinator를 유지, 모든 Coordinator에는 일련의 하위 Coordinator가 있음
+   1. Coordinator 프로토콜 생성
+   	- 자식 Coordinator들을 관리할 배열 선언
+	2. 작업을 마친 경우 작동할 프로토콜을 선언
+	3. 각각의 Coordinator의 Type을 지정할 enum을 선언
+	4. 각각의 Coordinator의 프로토콜을 선언
+	5. 객체(Coordinator)를 작성
+  
