@@ -107,6 +107,54 @@ BCoordinator에서는 사용자 정보를 전달하는 등 화면 간 데이터�
 
 <br><br><br>
 
+## MVVM-C ?
+
+<br>
+
+MVVM에서 뷰컨트롤러 계층을 관리하는 Coordinator를 따로 분리하는 것
+
+<br>
+
+```swift
+// ViewModel 생성
+let aViewModel = AViewModel()
+
+// View 생성 및 ViewModel 연결
+let aViewController = AViewController(viewModel: aViewModel)
+
+// Coordinator와 View 연결
+aViewController.coordinator = self 
+
+// 화면 전환
+navigationController.pushViewController(aViewController, animated: true)
+```
+
+Coordinator 클래스 내에서 ViewModel을 생성하고 View에 연결한다.
+
+<br><br>
+
+```swift
+class AViewModel {
+		//...
+}
+
+class AViewController: UIViewController {
+    var viewModel: AViewModel?
+    var coordinator: ACoordinator?
+
+    init(viewModel: AViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+}
+```
+
+특정 ViewModel과 연결해 데이터를 전달한다.
+
+위 코드에서 Coordinator는 ViewModel과 View를 연결하며, 화면 전환을 처리한다!
+
+<br><br><br>
+
 ## Coordinator의 장단점
 
 <br>
