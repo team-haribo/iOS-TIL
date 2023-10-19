@@ -3,7 +3,7 @@
 ---
 
 ### Optional을 사용했을때 장점
-- **안전성 향상:** Optional은 값의 존재 여부를 불확실한 상황에서 명시적으로 다룰 수 있게 합니다. 이로 인해 값이 없는 상황을 더 안전하게 처리할 수 있으며, 예상치 못한 nil 값으로 인한 오류를 방지할 수 있음
+-  **안전성 향상:** Optional은 값의 존재 여부를 불확실한 상황에서 명시적으로 다룰 수 있게 합니다. 이로 인해 값이 없는 상황을 더 안전하게 처리할 수 있으며, 예상치 못한 nil 값으로 인한 오류를 방지할 수 있음
 
 - **오류 처리:** 함수나 메서드가 실패할 수 있는 경우, Optional을 사용하여 오류를 나타낼 수 있습니다. 이를 통해 오류를 더 명시적으로 처리할 수 있고, 예외 상황을 처리하는 코드를 간소화할 수 있음
 
@@ -15,16 +15,18 @@
 
 - **강제 언래핑 오류:** 값이 Optional로 래핑되어 있을 때 강제로 언래핑하지 않고 사용하면 런타임 에러가 발생할 수 있음, 따라서 올바른 처리가 없을 경우 오류가 발생할 수 있음
 
+**위 단점을 해소할 수 있는 방법은 밑에 설명되어있는 바인딩과 체이닝을 사용하는것 입니다**
+
+
 ```swift
 // 옵셔널 변수 정의
-var optionalValue: Int? = 5
+var optional1: Int? = 5
 
-// 옵셔널을 사용한 코드
-if let unwrappedValue = optionalValue {
-    let result = unwrappedValue * 2
-    print("Result: \(result)")
+if let unwrapped1 = optional1 {
+    let result = unwrapped1 * 2
+    print("결과: \(result)")
 } else {
-    print("Value is nil")
+    print("값이 null임")
 }
 ```
 **위에 코드에는 optional1이라는 optional 변수를 포함하고 있습니다. 옵셔널 변수를 사용하기 위해서 if let을 사용하여 값을 안전하게 추출하고 처리해야하는데 이로인해 코드가 늘어나고, 간결함이 줄어들어 단점으로 작용합니다.**
@@ -77,3 +79,34 @@ func process1() {
     print(unwrapped1)
 }
 ```
+#### Optional 체이닝 하는법
+
+1. 프로퍼티에 접근
+
+```swift
+struct Person {
+    var name: String
+}
+
+class Address {
+    var street: String?
+    var resident: Person?
+}
+
+let address = Address()
+let residentName = address.resident?.name // 옵셔널 체이닝 사용함
+```
+
+2. 메서드 호출
+
+```swift
+class Calculator {
+    func add(a: Int, b: Int) -> Int {
+        return a + b
+    }
+}
+
+var mathCalculator: Calculator?
+let result = mathCalculator?.add(a: 5, b: 3) // 옵셔널 체이닝 사용함
+```
+- mathCalculator?.add(a: 5, b: 3)은 mathCalculator가 nil이 아닌 경우에만 add(a:b:) 메서드를 호출합니다. 그렇지 않으면 result는 nil이 됩니다.
