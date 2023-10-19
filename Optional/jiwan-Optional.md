@@ -15,6 +15,20 @@
 
 - **강제 언래핑 오류:** 값이 Optional로 래핑되어 있을 때 강제로 언래핑하지 않고 사용하면 런타임 에러가 발생할 수 있음, 따라서 올바른 처리가 없을 경우 오류가 발생할 수 있음
 
+```swift
+// 옵셔널 변수 정의
+var optionalValue: Int? = 5
+
+// 옵셔널을 사용한 코드
+if let unwrappedValue = optionalValue {
+    let result = unwrappedValue * 2
+    print("Result: \(result)")
+} else {
+    print("Value is nil")
+}
+```
+**위에 코드에는 optional1이라는 optional 변수를 포함하고 있습니다. 옵셔널 변수를 사용하기 위해서 if let을 사용하여 값을 안전하게 추출하고 처리해야하는데 이로인해 코드가 늘어나고, 간결함이 줄어들어 단점으로 작용합니다.**
+
 <br>
 
 **값이 있는 Optional:** 값이 존재하는 경우를 나타내는 Optional. 이 경우 변수 또는 상수에 실제 값이 들어가며 값이 없는 경우 nil을 가짐
