@@ -34,3 +34,32 @@ age = nil // 값이 없는 Optional
 var name: String? // 값이 없을 수도 있음
 name = nil // 값이 없는 Optional
 ```
+
+#### Optional 바인딩 하는법
+1. Optional 변수생성
+
+```swift
+var optional1: String?
+```
+
+2. 값이 있는지 확인 / 바인딩
+```swift
+if let unwrapped1 = optional1 {
+    // 값이 있는 경우, unwrapped1에 값이 바인딩됩니다.
+    print(unwrapped1)
+} else {
+    // 값이 없을떄
+    print("값이 없습니다.")
+}
+```
+3. 바인딩 (guard사용)
+```swift
+func process1() {
+    guard let unwrapped1 = optional1 else {
+        // 값이 없는 경우, 예외나 오류를 처리하고 함수종료함
+        return
+    }
+    // 값이 존재하는 경우, unwrapped1에 값이 바인딩되어 함수 내에서 사용할 수 있음
+    print(unwrapped1)
+}
+```
