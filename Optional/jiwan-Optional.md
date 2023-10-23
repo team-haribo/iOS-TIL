@@ -38,7 +38,6 @@ if let unwrapped1 = optional1 {
 ```swift 
 var age: Int? // 값이 있을 수도 있고 없을 수도 있음
 age = 30 // 값이 있는 Optional
-age = nil // 값이 없는 Optional
 ```
 
 <br>
@@ -47,7 +46,6 @@ age = nil // 값이 없는 Optional
 이 경우 변수 또는 상수는 nil을 가짐
 
 ```swift
-var name: String? // 값이 없을 수도 있음
 name = nil // 값이 없는 Optional
 ```
 
