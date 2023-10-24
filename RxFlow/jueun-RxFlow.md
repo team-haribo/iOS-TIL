@@ -8,7 +8,7 @@
 
 ### RxFlow의 장점
 - 스토리보드를 유닛단위로 분리하여 UIViewController의 재사용성을 키움
-- 네비게시연의 흐름(context)에 맞게 UIViewController를 다른 방식으로 보여줄 수 있음
+- 네비게이션의 흐름(context)에 맞게 UIViewController를 다른 방식으로 보여줄 수 있음
 - 의존성 주입(Dependency Injection)을 쉽게 구현할 수 있음
 - UIViewController에 있는 모든 네비게이션 매커니즘을 삭제함
 - 반응형 프로그래밍(Reactive Programming) 사용르 촉진함
