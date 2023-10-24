@@ -11,7 +11,7 @@
 - 네비게이션의 흐름(context)에 맞게 UIViewController를 다른 방식으로 보여줄 수 있음
 - 의존성 주입(Dependency Injection)을 쉽게 구현할 수 있음
 - UIViewController에 있는 모든 네비게이션 매커니즘을 삭제함
-- 반응형 프로그래밍(Reactive Programming) 사용르 촉진함
+- 반응형 프로그래밍(Reactive Programming) 사용을 촉진함
 - 네비게이션에서 일어나는 대부분의 케이스를 처리하면서 선언형으로 표현할 수 있음
 - 어플리케이션을 네비게이션의 논리적인 블록으로 나눌 수 있음
 
